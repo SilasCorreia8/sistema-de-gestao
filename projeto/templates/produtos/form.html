@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Cadastro / Edição</h2>
+    <hr>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn btn-new">Salvar Dados</button>
+        <br>
+        <a href="{% url 'lista-produtos' %}" style="display:block; text-align:center; margin-top:10px;">Cancelar</a>
+    </form>
+{% endblock %}
