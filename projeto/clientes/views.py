@@ -4,6 +4,11 @@ from django.urls import reverse_lazy
 from .models import Cliente
 from .forms import ClienteForm
 
+from rest_framework.decorators import api_view
+from .serializers import ClienteSerializer
+from rest_framework.response import Response
+from rest_framework import status
+
 # Create your views here.
 class ClienteCreate(CreateView):
     model = Cliente
@@ -26,3 +31,13 @@ class ClienteDelete(DeleteView):
     model = Cliente
     template_name = "clientes/excluir.html"
     success_url = reverse_lazy("lista-clientes")
+
+@api_view(['GET'])
+def get_clientes(request):
+
+    if request.method == 'GET': 
+       clientes = Cliente.objects.all()
+       serializer = ClienteSerializer(clientes, many=True)
+       return Response(serializer.data)
+
+    return Response(status.HTTP_404_NOT_FOUND)

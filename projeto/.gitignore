@@ -1,0 +1,8 @@
+.env
+.venv
+env/
+venv/
+lib/
+build/
+develop-eggs/
+dist/

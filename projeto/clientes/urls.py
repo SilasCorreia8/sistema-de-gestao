@@ -7,4 +7,5 @@ urlpatterns = [
     path("novo/", ClienteCreate.as_view(), name="criar-clientes"),
     path("editar/<int:pk>", ClienteUpdate.as_view(), name="editar-clientes"),
     path("excluir/<int:pk>", ClienteDelete.as_view(), name="excluir-clientes"),
+    path("cli/", views.get_clientes, name="get-clientes"),
 ]
