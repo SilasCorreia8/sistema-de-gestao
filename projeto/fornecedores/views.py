@@ -4,6 +4,11 @@ from django.urls import reverse_lazy
 from .models import Fornecedor
 from .forms import FornecedorForm
 
+from rest_framework.decorators import api_view
+from .serializers import FornecedorSerializer
+from rest_framework.response import Response
+from rest_framework import status
+
 # Create your views here.
 class FornecedorCreate(CreateView):
     model = Fornecedor
@@ -26,3 +31,13 @@ class FornecedorDelete(DeleteView):
     model = Fornecedor
     template_name = "fornecedores/excluir.html"
     success_url = reverse_lazy("lista-fornecedores")
+
+@api_view(['GET'])
+def get_fornecedores(request):
+
+    if request.method == 'GET':
+        forecedores = Fornecedor.objects.all()
+        serializer = FornecedorSerializer(forecedores, many=True)
+        return Response(serializer.data)
+    
+    return Response(status.HTTP_404_NOT_FOUND)
