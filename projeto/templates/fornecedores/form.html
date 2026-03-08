@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="d-flex">
     <h2>Cadastro / Edição</h2>
-    <hr>
+</div>
     
-    <form method="post">
-        {% csrf_token %}
+<form method="post">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    
+    <div class="mt-3">
+        <button type="submit" class="btn btn-success w-100">Salvar Dados</button>
         
-        {{ form.as_p }}
-        
-        <button type="submit" class="btn btn-new">Salvar Dados</button>
-        <br>
-        <a href="{% url 'lista-fornecedores' %}" style="display:block; text-align:center; margin-top:10px;">Cancelar</a>
-    </form>
+        <button type="button" class="btn w-100 mt-3" style="background-color: #7f8c8d;" onclick="history.back()">
+            Cancelar e Voltar
+        </button>
+    </div>
+</form>
 {% endblock %}
