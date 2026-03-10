@@ -22,8 +22,8 @@ urlpatterns = [
     path('clientes/', include('clientes.urls')),
     path('produtos/', include('produtos.urls')),
     path('fornecedores/', include('fornecedores.urls')),
-    path('api-clientes/', include('clientes.urls')),
-    path('api-produtos/', include('produtos.urls')),
-    path('fornecedores-produtos/', include('fornecedores.urls')),
+    # path('api-clientes/', include('clientes.urls')),
+    # path('api-produtos/', include('produtos.urls')),
+    # path('fornecedores-produtos/', include('fornecedores.urls')),
     path('admin/', admin.site.urls),
 ]
