@@ -3,7 +3,7 @@
 {% block content %}
 <div class="page-header">
     <h1>Lista de Produtos</h1>
-    <a href="{% url 'criar-produtos' %}" class="btn btn-success">Novo Produto</a>
+    <a href="{% url 'criar_produtos' %}" class="btn btn-success">Novo Produto</a>
 </div>
 
 <table>
@@ -24,10 +24,10 @@
             <td>{{ p.preco }}</td>
             <td>{{ p.descricao }}</td>
             <td>{{ p.quantidade }}</td>
-            <td>{{ p.validade }}</td>
+            <td>{{ p.validade|date:"d/m/Y" }}</td>
             <td class="text-center">
-                <a href="{% url 'editar-produtos' p.pk %}" class="btn">Editar</a>
-                <a href="{% url 'excluir-produtos' p.pk %}" class="btn btn-danger">Excluir</a>
+                <a href="{% url 'editar_produtos' p.pk %}" class="btn">Editar</a>
+                <a href="{% url 'excluir_produtos' p.pk %}" class="btn btn-danger">Excluir</a>
             </td>
         </tr>
         {% empty %}

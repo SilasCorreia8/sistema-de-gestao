@@ -3,7 +3,7 @@
 {% block content %}
 <div class="page-header">
     <h1>Lista de Clientes</h1>
-    <a href="{% url 'criar-clientes' %}" class="btn btn-success">Novo Cliente</a>
+    <a href="{% url 'criar_clientes' %}" class="btn btn-success">Novo Cliente</a>
 </div>
 
 <table>
@@ -21,11 +21,11 @@
         <tr>
             <td>{{ c.nome }}</td>
             <td>{{ c.email }}</td>
-            <td>{{ c.data }}</td>
+            <td>{{ c.data|date:"d/m/Y" }}</td>
             <td>{{ c.telefone }}</td>
             <td class="text-center">
-                <a href="{% url 'editar-clientes' c.pk %}" class="btn">Editar</a>
-                <a href="{% url 'excluir-clientes' c.pk %}" class="btn btn-danger">Excluir</a>
+                <a href="{% url 'editar_clientes' c.pk %}" class="btn">Editar</a>
+                <a href="{% url 'excluir_clientes' c.pk %}" class="btn btn-danger">Excluir</a>
             </td>
         </tr>
         {% empty %}

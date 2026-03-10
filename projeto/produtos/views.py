@@ -14,7 +14,7 @@ class ProdutoCreate(CreateView):
     model = Produto
     form_class = ProdutoForm
     template_name = "produtos/form.html"
-    success_url = reverse_lazy("lista-produtos")
+    success_url = reverse_lazy("lista_produtos")
 
 class ProdutoList(ListView):
     model = Produto
@@ -25,12 +25,12 @@ class ProdutoUpdate(UpdateView):
     model = Produto
     form_class = ProdutoForm 
     template_name = "produtos/form.html"
-    success_url = reverse_lazy("lista-produtos")
+    success_url = reverse_lazy("lista_produtos")
 
 class ProdutoDelete(DeleteView):
     model = Produto
     template_name = "produtos/excluir.html"
-    success_url = reverse_lazy("lista-produtos")
+    success_url = reverse_lazy("lista_produtos")
 
 @api_view(['GET'])
 def get_produtos(request):

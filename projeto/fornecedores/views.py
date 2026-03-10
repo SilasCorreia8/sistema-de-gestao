@@ -14,7 +14,7 @@ class FornecedorCreate(CreateView):
     model = Fornecedor
     form_class = FornecedorForm
     template_name = "fornecedores/form.html"
-    success_url = reverse_lazy("lista-fornecedores")
+    success_url = reverse_lazy("lista_fornecedores")
 
 class FornecedorList(ListView):
     model = Fornecedor
@@ -25,12 +25,12 @@ class FornecedorUpdate(UpdateView):
     model = Fornecedor
     form_class = FornecedorForm
     template_name = "fornecedores/form.html"
-    success_url = reverse_lazy("lista-fornecedores")
+    success_url = reverse_lazy("lista_fornecedores")
 
 class FornecedorDelete(DeleteView):
     model = Fornecedor
     template_name = "fornecedores/excluir.html"
-    success_url = reverse_lazy("lista-fornecedores")
+    success_url = reverse_lazy("lista_fornecedores")
 
 @api_view(['GET'])
 def get_fornecedores(request):

@@ -14,7 +14,7 @@ class ClienteCreate(CreateView):
     model = Cliente
     form_class = ClienteForm
     template_name = "clientes/form.html"
-    success_url = reverse_lazy("lista-clientes")
+    success_url = reverse_lazy("lista_clientes")
 
 class ClienteList(ListView):
     model = Cliente
@@ -25,12 +25,12 @@ class ClienteUpdate(UpdateView):
     model = Cliente
     form_class = ClienteForm 
     template_name = "clientes/form.html"
-    success_url = reverse_lazy("lista-clientes")
+    success_url = reverse_lazy("lista_clientes")
 
 class ClienteDelete(DeleteView):
     model = Cliente
     template_name = "clientes/excluir.html"
-    success_url = reverse_lazy("lista-clientes")
+    success_url = reverse_lazy("lista_clientes")
 
 @api_view(['GET'])
 def get_clientes(request):
