@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-header" style="border-bottom: none; padding-bottom: 0;">
+    <div>
+        <h2>Painel de Visão Geral</h2>
+        <p style="color: var(--secondary);">Bem-vindo ao seu Sistema de Gestão. Aqui está o resumo de hoje.</p>
+    </div>
+</div>
+
+<div class="dashboard-grid">
+    <div class="stat-card">
+        <p>Clientes Cadastrados</p>
+        <h3>{{ total_clientes }}</h3>
+    </div>
+    
+    <div class="stat-card card-success">
+        <p>Produtos Ativos</p>
+        <h3>{{ total_produtos }}</h3>
+    </div>
+    
+    <div class="stat-card card-warning">
+        <p>Fornecedores</p>
+        <h3>{{ total_fornecedores }}</h3>
+    </div>
+    
+</div>
+
+<div style="margin-top: 40px;">
+    <h3 style="color: var(--primary); margin-bottom: 15px;">Ações Rápidas</h3>
+    <div style="display: flex; gap: 15px;">
+        <a href="#" class="btn btn-success">Novo Cliente</a>
+        <a href="#" class="btn" style="background-color: var(--primary);">Novo Produto</a>
+    </div>
+</div>
+{% endblock %}
