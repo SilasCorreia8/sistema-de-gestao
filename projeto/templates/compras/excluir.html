@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="alert-container">
+    
+    <h2 style="color: var(--danger); margin-bottom: 10px;">Atenção!</h2>
+    <p>Você tem certeza que deseja excluir definitivamente este registro?</p>
+    
+    <div class="alert-box">
+        <h3>Compra: {{ object.produto.nome }}</h3>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Sim, Excluir</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">Cancelar</button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

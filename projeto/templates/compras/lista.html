@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Registro de Compras</h1>
+    <a href="{% url 'criar_compras' %}" class="btn btn-success">Nova Compra</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Produto</th>
+            <th>Fornecedor</th>
+            <th>Qtd</th>
+            <th>Preço</th>
+            <th>Data</th>
+            <th class="text-center">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in compras %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.produto.nome }}</td>
+            <td>{{ c.fornecedor.nome }}</td>
+            <td>{{ c.quantidade }}</td>
+            <td>R$ {{ c.preco }}</td>
+            <td>{{ c.data_compra|date:"d/m/Y" }}</td>
+            <td class="text-center">
+                <a href="{% url 'editar_compras' c.pk %}" class="btn">Editar</a>
+                <a href="{% url 'excluir_compras' c.pk %}" class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7" class="text-center">Nenhuma compra registrada.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
