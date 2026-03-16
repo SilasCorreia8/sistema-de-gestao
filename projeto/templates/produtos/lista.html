@@ -21,7 +21,7 @@
         {% for p in produtos %}
         <tr>
             <td>{{ p.nome }}</td>
-            <td>{{ p.preco }}</td>
+            <td>R$ {{ p.preco }}</td>
             <td>{{ p.descricao }}</td>
             <td>{{ p.quantidade }}</td>
             <td>{{ p.validade|date:"d/m/Y" }}</td>
