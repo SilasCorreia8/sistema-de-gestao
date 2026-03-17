@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput, EmailInput
+from django.forms import ModelForm, TextInput, EmailInput, Select
 from .models import Fornecedor
 
 class FornecedorForm(ModelForm):
@@ -12,5 +12,5 @@ class FornecedorForm(ModelForm):
             'email': EmailInput(attrs={'placeholder': 'E-mail de Contato'}),
             'telefone': TextInput(attrs={'placeholder': 'Telefone'}),
             'cidade': TextInput(attrs={'placeholder': 'Cidade'}),
-            'estado': TextInput(attrs={'placeholder': 'Estado'}),
+            'estado': Select(),
         }
