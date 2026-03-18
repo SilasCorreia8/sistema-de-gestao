@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Lançamento de Venda</h2>
+</div>
+
+<div class="form-container">
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <div style="background-color: #e8f4f8; border-left: 5px solid var(--accent); padding: 15px; margin-top: 20px; border-radius: 4px;">
+            <span style="font-size: 1.1rem; color: var(--secondary);">Valor Total da Venda:</span><br>
+            <span style="font-size: 2rem; font-weight: bold; color: var(--primary);">
+                R$ <span id="visor_total">0.00</span>
+            </span>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">Confirmar Venda</button>
+            <button type="button" class="btn btn-secondary" onclick="history.back()">Cancelar</button>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // Pega os elementos do HTML (os inputs criados pelo Django)
+        const inputPreco = document.getElementById("id_preco");
+        const inputQuantidade = document.getElementById("id_quantidade");
+        const visorTotal = document.getElementById("visor_total");
+
+        // Função que faz o cálculo
+        function calcularTotal() {
+            // Pega os valores digitados
+            const preco = parseFloat(inputPreco.value) || 0;
+            const quantidade = parseInt(inputQuantidade.value) || 0;
+            
+            // Calculo
+            const total = preco * quantidade;
+            visorTotal.textContent = total.toFixed(2);
+        }
+
+        // Reconhece ação do usuario
+        inputPreco.addEventListener("input", calcularTotal);
+        inputQuantidade.addEventListener("input", calcularTotal);
+
+        // Chama a função quando a tela abri
+        calcularTotal();
+    });
+</script>
+{% endblock %}

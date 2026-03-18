@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Registro de Vendas</h1>
+    <a href="{% url 'criar_vendas' %}" class="btn btn-success">Nova Venda</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Cliente</th>
+            <th>Qtd</th>
+            <th>Preço</th>
+            <th>Data</th>
+            <th class="text-right">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for v in vendas %}
+        <tr>
+            <td>{{ v.produto.nome }}</td>
+            <td>{{ v.cliente.nome }}</td>
+            <td>{{ v.quantidade }}</td>
+            <td>R$ {{ v.preco }}</td>
+            <td>{{ v.data_venda|date:"d/m/Y" }}</td>
+            <td class="text-right">
+                <a href="{% url 'editar_vendas' v.pk %}" class="btn">Editar</a>
+                <a href="{% url 'excluir_vendas' v.pk %}" class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="text-center">Nenhuma venda registrada.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
