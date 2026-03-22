@@ -9,25 +9,27 @@ from .serializers import ProdutoSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
-class ProdutoCreate(CreateView):
+class ProdutoCreate(LoginRequiredMixin, CreateView):
     model = Produto
     form_class = ProdutoForm
     template_name = "produtos/form.html"
     success_url = reverse_lazy("lista_produtos")
 
-class ProdutoList(ListView):
+class ProdutoList(LoginRequiredMixin, ListView):
     model = Produto
     template_name = "produtos/lista.html"
     context_object_name = "produtos"
 
-class ProdutoUpdate(UpdateView):
+class ProdutoUpdate(LoginRequiredMixin, UpdateView):
     model = Produto
     form_class = ProdutoForm 
     template_name = "produtos/form.html"
     success_url = reverse_lazy("lista_produtos")
 
-class ProdutoDelete(DeleteView):
+class ProdutoDelete(LoginRequiredMixin, DeleteView):
     model = Produto
     template_name = "produtos/excluir.html"
     success_url = reverse_lazy("lista_produtos")

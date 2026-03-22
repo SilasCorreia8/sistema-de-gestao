@@ -17,9 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import DashboardView
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
+
+    # Rotas de Autenticação (Login/Logout)
+    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+
     path('', DashboardView.as_view(), name='home'),
+    
     # path('', include('clientes.urls')),
     path('clientes/', include('clientes.urls')),
     path('produtos/', include('produtos.urls')),

@@ -9,25 +9,27 @@ from .serializers import VendaSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
-class VendaCreate(CreateView):
+class VendaCreate(LoginRequiredMixin, CreateView):
     model = Venda
     form_class = VendaForm
     template_name = "vendas/form.html"
     success_url = reverse_lazy("lista_vendas")
 
-class VendaList(ListView):
+class VendaList(LoginRequiredMixin, ListView):
     model = Venda
     template_name = "vendas/lista.html"
     context_object_name = "vendas"
 
-class VendaUpdate(UpdateView):
+class VendaUpdate(LoginRequiredMixin, UpdateView):
     model = Venda
     form_class = VendaForm
     template_name = "vendas/form.html"
     success_url = reverse_lazy("lista_vendas")
 
-class VendaDelete(DeleteView):
+class VendaDelete(LoginRequiredMixin, DeleteView):
     model = Venda
     template_name = "vendas/excluir.html"
     success_url = reverse_lazy("lista_vendas")

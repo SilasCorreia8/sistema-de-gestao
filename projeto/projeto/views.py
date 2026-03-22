@@ -1,10 +1,11 @@
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from clientes.models import Cliente
 from produtos.models import Produto
 from fornecedores.models import Fornecedor
 
-class DashboardView(TemplateView):
+class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "dashboard.html"
 
     # Função que envia dados extras para o HTML
