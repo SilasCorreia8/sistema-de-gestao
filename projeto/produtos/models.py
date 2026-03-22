@@ -1,8 +1,12 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from fornecedores.models import Fornecedor
 
 # Create your models here.
 class Produto(models.Model):
+
+    fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE, related_name='produtos', null=True, blank=True)
+
     nome = models.CharField(max_length=100)
     preco = models.DecimalField(
         max_digits=10, 

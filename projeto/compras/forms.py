@@ -5,7 +5,7 @@ from django import forms
 class CompraForm(ModelForm):
     class Meta:
         model = Compra
-        fields = ["produto", "fornecedor", "preco", "quantidade", "data_compra"]
+        fields = ["fornecedor", "produto", "preco", "quantidade", "data_compra"]
         widgets = {
             # Exibe dd/mm/aaaa e aceita esse formato
             'data_compra': forms.DateInput(format='%d/%m/%Y', attrs={'type': 'date'}),

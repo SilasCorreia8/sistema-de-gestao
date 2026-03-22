@@ -19,4 +19,36 @@
         </div>
     </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const fornecedorSelect = document.getElementById("id_fornecedor");
+        const produtoSelect = document.getElementById("id_produto");
+
+        // Função que é acionada qunado Fornecedor muda
+        fornecedorSelect.addEventListener("change", function() {
+            const fornecedorId = this.value;
+            
+            // Limpa a lista de produtos atual
+            produtoSelect.innerHTML = '<option value="">---------</option>';
+            
+            // Se o usuário selecionou um fornecedor válido, vai buscar os produtos
+            if (fornecedorId) {
+                fetch(`/produtos/api/por-fornecedor/${fornecedorId}/`)
+                    .then(response => response.json()) // Transforma a resposta em JSON
+                    .then(data => {
+                        // Para cada produto que veio do banco, cria uma nova opção (tag <option>)
+                        data.forEach(produto => {
+                            const option = document.createElement("option");
+                            option.value = produto.id;      // O ID vai para o banco
+                            option.textContent = produto.nome; // O Nome aparece na tela
+                            produtoSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error("Erro ao buscar produtos:", error));
+            }
+        });
+    });
+</script>
+
 {% endblock %}

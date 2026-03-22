@@ -8,4 +8,5 @@ urlpatterns = [
     path("editar/<int:pk>", ProdutoUpdate.as_view(), name="editar_produtos"),
     path("excluir/<int:pk>", ProdutoDelete.as_view(), name="excluir_produtos"),
     path("cli/", views.get_produtos, name="get_produtos"),
+    path("api/por-fornecedor/<int:fornecedor_id>/", views.produtos_por_fornecedor, name="produtos_por_fornecedor"),
 ]

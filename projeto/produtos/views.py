@@ -11,6 +11,8 @@ from rest_framework import status
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.http import JsonResponse
+
 # Create your views here.
 class ProdutoCreate(LoginRequiredMixin, CreateView):
     model = Produto
@@ -43,3 +45,9 @@ def get_produtos(request):
        return Response(serializer.data)
 
     return Response(status.HTTP_404_NOT_FOUND)
+
+def produtos_por_fornecedor(request, fornecedor_id):
+    # Busca apenas os produtos que têm a chave estrangeira igual ao fornecedor selecionado
+    produtos = Produto.objects.filter(fornecedor_id=fornecedor_id).values('id', 'nome')
+    # Converte para uma lista e retorna como JSON
+    return JsonResponse(list(produtos), safe=False)

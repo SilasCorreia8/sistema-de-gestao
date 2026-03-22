@@ -11,7 +11,7 @@
         <tr>
             <th>Nome</th>
             <th>Preço</th>
-            <th>Descrição</th>
+            <th>Fornecedor</th>
             <th>Quantidade</th>
             <th>Validade</th>
             <th class="text-center">Ações</th>
@@ -22,7 +22,15 @@
         <tr>
             <td>{{ p.nome }}</td>
             <td>R$ {{ p.preco }}</td>
-            <td>{{ p.descricao }}</td>
+            <td>
+                {% if p.fornecedor %}
+                    <span style="background-color: var(--primary); color: white; padding: 3px 8px; border-radius: 12px; font-size: 0.8rem;">
+                        {{ p.fornecedor.nome }}
+                    </span>
+                {% else %}
+                    <span style="color: gray;">Avulso</span>
+                {% endif %}
+            </td>
             <td>{{ p.quantidade }}</td>
             <td>{{ p.validade|date:"d/m/Y" }}</td>
             <td class="text-center">

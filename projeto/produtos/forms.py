@@ -5,7 +5,7 @@ from django import forms
 class ProdutoForm(ModelForm):
     class Meta:
         model = Produto
-        fields = ["nome", "preco", "descricao", "quantidade", "validade"]
+        fields = ["fornecedor", "nome", "preco", "descricao", "quantidade", "validade"]
         widgets = {
             # Exibe dd/mm/aaaa e aceita esse formato
             'validade': forms.DateInput(format='%d/%m/%Y', attrs={'type': 'date'}),
