@@ -16,10 +16,12 @@ class VendaForm(ModelForm):
         self.fields['data_venda'].input_formats = ['%d/%m/%Y', '%Y-%m-%d']
 
     def clean(self):
-        # Pega os dados que digitados
+        # Pega os dados
         cleaned_data = super().clean()
         produto = cleaned_data.get("produto")
         quantidade_solicitada = cleaned_data.get("quantidade")
+        cleaned_data = super().clean()
+        preco = cleaned_data.get("preco")
 
         # Se o usuário preencheu o produto e a quantidade corretamente
         if produto and quantidade_solicitada:
@@ -36,6 +38,13 @@ class VendaForm(ModelForm):
                 self.add_error(
                     'quantidade', 
                     f"Estoque insuficiente! O produto '{produto.nome}' tem apenas {estoque_disponivel} unidades disponíveis."
+                )
+
+        if preco:
+            if preco < 0:
+                self.add_error(
+                    'preco', 
+                    f"Preço não poder ser nagativo!"
                 )
 
         return cleaned_data

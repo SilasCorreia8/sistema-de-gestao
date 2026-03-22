@@ -15,3 +15,16 @@ class ProdutoForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['validade'].input_formats = ['%d/%m/%Y', '%Y-%m-%d']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        preco = cleaned_data.get("preco")
+
+        if preco:
+            if preco < 0:
+                self.add_error(
+                    'preco', 
+                    f"Preço não poder ser nagativo!"
+                )
+
+        return cleaned_data
