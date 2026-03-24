@@ -1,4 +1,3 @@
-
 # 📊 ERP Vendas - Sistema de Gestão Profissional
 
 ![Status do Projeto](https://img.shields.io/badge/Status-Concluído-success)
