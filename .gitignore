@@ -5,4 +5,8 @@ venv/
 lib/
 build/
 develop-eggs/
-dist/   
+dist/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
