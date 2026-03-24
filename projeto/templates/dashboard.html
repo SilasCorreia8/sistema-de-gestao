@@ -29,8 +29,8 @@
 <div style="margin-top: 40px;">
     <h3 style="color: var(--primary); margin-bottom: 15px;">Ações Rápidas</h3>
     <div style="display: flex; gap: 15px;">
-        <a href="#" class="btn btn-success">Novo Cliente</a>
-        <a href="#" class="btn" style="background-color: var(--primary);">Novo Produto</a>
+        <a href="{% url 'criar_produtos' %}" class="btn btn-success">Novo Produto</a>
+        <a href="{% url 'criar_fornecedores' %}" class="btn" style="background-color: var(--primary);">Novo Fornecedor</a>
     </div>
 </div>
 {% endblock %}

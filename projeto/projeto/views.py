@@ -4,6 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from clientes.models import Cliente
 from produtos.models import Produto
 from fornecedores.models import Fornecedor
+from compras.models import Compra
+from vendas.models import Venda
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "dashboard.html"
@@ -17,5 +19,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context['total_clientes'] = Cliente.objects.count()
         context['total_produtos'] = Produto.objects.count()
         context['total_fornecedores'] = Fornecedor.objects.count()
+        context['total_compras'] = Compra.objects.count()
+        context['total_vendas'] = Venda.objects.count()
         
         return context
